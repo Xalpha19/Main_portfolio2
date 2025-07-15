@@ -24,44 +24,10 @@ const Education = () => {
           degree: "Bachelor of Technology in Information Technology",
           school: "University of Mumbai",
           period: "2014 - 2018",
-          location: "Mumbai, India",
+          location: "India",
           gpa: "First Class",
           description: "Strong foundation in computer systems, networking, and information security. Final year project on 'Advanced Persistent Threat Detection Systems'.",
           coursework: ["Computer Networks", "Information Security", "Database Systems", "System Administration", "Cryptography"]
-        }
-      ]
-    },
-    {
-      id: "certifications",
-      title: "Professional Certifications",
-      icon: Award,
-      items: [
-        {
-          name: "GIAC Certified Forensic Examiner (GCFE)",
-          issuer: "SANS Institute",
-          issued: "2023",
-          expires: "2027",
-          credential: "GCFE-2023-789012",
-          description: "Advanced certification in digital forensics and incident response, covering Windows forensics and timeline analysis.",
-          skills: ["Digital Forensics", "Windows Analysis", "Timeline Forensics", "Evidence Processing"]
-        },
-        {
-          name: "GIAC Certified Forensic Analyst (GCFA)",
-          issuer: "SANS Institute",
-          issued: "2022",
-          expires: "2026",
-          credential: "GCFA-2022-345678",
-          description: "Expert-level certification in advanced digital forensics and incident response methodologies.",
-          skills: ["Advanced Forensics", "Memory Analysis", "Network Forensics", "Threat Hunting"]
-        },
-        {
-          name: "Offensive Security Certified Professional (OSCP)",
-          issuer: "Offensive Security",
-          issued: "In Progress",
-          expires: "Lifetime",
-          credential: "Expected 2024",
-          description: "Hands-on penetration testing certification demonstrating practical security assessment skills.",
-          skills: ["Penetration Testing", "Exploitation", "Post-Exploitation", "Report Writing"]
         }
       ]
     },
@@ -96,44 +62,88 @@ const Education = () => {
         }
       ]
     },
-    {
-      id: "skills",
-      title: "Technical Expertise",
-      icon: Code,
+     {
+      id: " Core Competency Areas",
+      title: "Professional Certifications",
+      icon: Award,
       items: [
         {
-          category: "Digital Forensics & DFIR",
-          skills: [
-            { name: "Autopsy/Sleuth Kit", level: 95 },
-            { name: "Volatility (Memory Analysis)", level: 90 },
-            { name: "KAPE/Timeline Analysis", level: 95 },
-            { name: "X-Ways Forensics", level: 85 },
-            { name: "Mobile Forensics", level: 80 }
-          ]
+          name: "GIAC Certified Forensic Examiner (GCFE)",
+          issuer: "SANS Institute",
+          issued: "2023",
+          expires: "2027",
+          credential: "GCFE-2023-789012",
+          description: "Advanced certification in digital forensics and incident response, covering Windows forensics and timeline analysis.",
+          skills: ["Digital Forensics", "Windows Analysis", "Timeline Forensics", "Evidence Processing"]
         },
         {
-          category: "Security Tools & SIEM",
-          skills: [
-            { name: "Splunk", level: 95 },
-            { name: "Elastic Stack (ELK)", level: 90 },
-            { name: "QRadar", level: 85 },
-            { name: "Chronicle/Sumo Logic", level: 80 },
-            { name: "KQL (Kusto Query)", level: 90 }
-          ]
+          name: "GIAC Certified Forensic Analyst (GCFA)",
+          issuer: "SANS Institute",
+          issued: "2022",
+          expires: "2026",
+          credential: "GCFA-2022-345678",
+          description: "Expert- certification in advanced digital forensics and incident response methodologies.",
+          skills: ["Advanced Forensics", "Memory Analysis", "Network Forensics", "Threat Hunting"]
         },
         {
-          category: "Threat Hunting & Analysis",
-          skills: [
-            { name: "MITRE ATT&CK", level: 95 },
-            { name: "YARA Rules", level: 90 },
-            { name: "Sigma Rules", level: 85 },
-            { name: "Threat Intelligence", level: 90 },
-            { name: "Malware Analysis", level: 85 }
-          ]
+          name: "Offensive Security Certified Professional (OSCP)",
+          issuer: "Offensive Security",
+          issued: "In Progress",
+          expires: "Lifetime",
+          credential: "Expected 2024",
+          description: "Hands-on penetration testing certification demonstrating practical security assessment skills.",
+          skills: ["Penetration Testing", "Exploitation", "Post-Exploitation", "Report Writing"]
         }
       ]
-    }
-  ];
+    },
+    {
+id: "skills",
+title: "Technical Expertise",
+icon: Code,
+items: [
+  {
+    category: "🔍 Threat Hunting & Detection Engineering",
+    skills: [
+      { name: "Advanced TTP and hypothesis-driven threat hunting" },
+      { name: "Custom detection rule development (SIEM, EDR, XDR)" },
+      { name: "MITRE ATT&CK alignment and use-case mapping" },
+      { name: "Behavioral and anomaly-based detection" },
+      { name: "Query development using KQL, Splunk SPL, and SQL" },
+      { name: "Dashboard creation and threat visualization" },
+      { name: "Detection gap analysis via purple teaming exercises" }
+    ]
+  },
+  {
+    category: "🧪 Digital Forensics & Incident Response (DFIR)",
+    skills: [
+      { name: "Disk, memory, network, and cloud forensics (AWS, Azure, GCP)" },
+      { name: "Root cause analysis and incident triage" },
+      { name: "Email and phishing analysis using OSINT and threat platforms" },
+      { name: "Incident containment, eradication, and recovery procedures" },
+      { name: "Evidence handling, forensic tooling, and chain of custody" },
+      { name: "Automated forensic data acquisition and triage scripting" },
+      { name: "Deception-based detection to reduce dwell time" }
+    ]
+  },
+  {
+    category: "☁️ Cloud & Endpoint Security",
+    skills: [
+      { name: "Endpoint threat detection using Trellix, Carbon Black, Defender XDR, etc." },
+      { name: "Host-based and behavioral intrusion analysis" },
+      { name: "Cloud-native security tooling (AWS GuardDuty, Azure Sentinel, GCP SCC)" },
+      { name: "Multi-cloud detection and response across SaaS environments" },
+      { name: "Unified DDoS incident response and mitigation framework" },
+      { name: "Cloud log analysis and cross-platform threat correlation" }
+    ]
+  },
+  {
+    category: "⚙️ Automation, Scripting & Threat Intelligence",
+    skills: [
+      { name: "Python, PowerShell, and JavaScript scripting for security automation" }
+    ]
+  }
+]
+];
 
   return (
     <section id="education" className="py-24 bg-gradient-hero">
@@ -176,12 +186,12 @@ const Education = () => {
                             <div key={skillIndex}>
                               <div className="flex justify-between mb-2">
                                 <span className="font-medium">{skill.name}</span>
-                                <span className="text-sm text-muted-foreground">{skill.level}%</span>
+                                <span className="text-sm text-muted-foreground">{skill.}%</span>
                               </div>
                               <div className="w-full bg-secondary rounded-full h-2">
                                 <div 
                                   className="bg-gradient-primary h-2 rounded-full glow-purple" 
-                                  style={{ width: `${skill.level}%` }}
+                                  style={{ width: `${skill.}%` }}
                                 ></div>
                               </div>
                             </div>
