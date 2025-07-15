@@ -143,7 +143,7 @@ items: [
     ]
   }
 ]
-};
+}]
 
   return (
     <section id="education" className="py-24 bg-gradient-hero">
