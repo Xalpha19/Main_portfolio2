@@ -179,35 +179,27 @@ items: [
               ))}
             </TabsList>
 
-            {education.map((section) => (
-              <TabsContent key={section.id} value={section.id} className="mt-8">
-                {section.id === "skills" ? (
-                  <div className="grid md:grid-cols-3 gap-6">
-                    {section.items.map((skillGroup, index) => (
-                      <Card key={index} className="bg-gradient-card border-border/50 glow-purple">
-                        <CardHeader>
-                          <CardTitle className="text-xl">{skillGroup.category}</CardTitle>
-                        </CardHeader>
-                        <CardContent className="space-y-4">
-                          {skillGroup.skills.map((skill, skillIndex) => (
-                            <div key={skillIndex}>
-                              <div className="flex justify-between mb-2">
-                                <span className="font-medium">{skill.name}</span>
-                                <span className="text-sm text-muted-foreground">{skill.}%</span>
-                              </div>
-                              <div className="w-full bg-secondary rounded-full h-2">
-                                <div 
-                                  className="bg-gradient-primary h-2 rounded-full glow-purple" 
-                                  style={{ width: `${skill.}%` }}
-                                ></div>
-                              </div>
-                            </div>
-                          ))}
-                        </CardContent>
-                      </Card>
-                    ))}
-                  </div>
-                ) : (
+           {education.map((section) => (
+  <TabsContent key={section.id} value={section.id} className="mt-8">
+    {section.id === "skills" ? (
+      <div className="grid md:grid-cols-2 gap-6">
+        {section.items.map((skillGroup, index) => (
+          <Card key={index} className="bg-gradient-card border-border/50 glow-purple">
+            <CardHeader>
+              <CardTitle className="text-xl">{skillGroup.category}</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              {skillGroup.skills.map((skill, skillIndex) => (
+                <div key={skillIndex} className="flex items-start">
+                  <span className="text-primary mr-2">•</span>
+                  <span className="text-sm">{skill.name}</span>
+                </div>
+              ))}
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    ) : (
                   <div className="grid gap-6">
                     {section.items.map((item, index) => (
                       <Card key={index} className="bg-gradient-card border-border/50 glow-purple hover:glow-purple transition-smooth animate-slide-up" style={{animationDelay: `${index * 0.1}s`}}>
