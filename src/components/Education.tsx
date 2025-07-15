@@ -14,7 +14,7 @@ const Education = () => {
         {
           degree: "Master of Science in Computer Forensics and Cybersecurity",
           school: "University of Greenwich",
-          period: "2018 - 2020",
+          period: "2023",
           location: "London, UK",
           gpa: "Distinction",
           description: "Advanced studies in digital forensics, cybersecurity frameworks, and incident response methodologies. Specialized in malware analysis and threat intelligence.",
