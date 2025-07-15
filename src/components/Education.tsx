@@ -107,9 +107,9 @@ items: [
       { name: "Advanced TTP and hypothesis-driven threat hunting" },
       { name: "Custom detection rule development (SIEM, EDR, XDR)" },
       { name: "MITRE ATT&CK alignment and use-case mapping" },
-      { name: "Behavioral and anomaly-based detection" },
+      { name: "Behavioural and anomaly-based detection" },
       { name: "Query development using KQL, Splunk SPL, and SQL" },
-      { name: "Dashboard creation and threat visualization" },
+      { name: "Dashboard creation and threat visualisation" },
       { name: "Detection gap analysis via purple teaming exercises" }
     ]
   },
@@ -129,7 +129,7 @@ items: [
     category: "☁️ Cloud & Endpoint Security",
     skills: [
       { name: "Endpoint threat detection using Trellix, Carbon Black, Defender XDR, etc." },
-      { name: "Host-based and behavioral intrusion analysis" },
+      { name: "Host-based and behavioural intrusion analysis" },
       { name: "Cloud-native security tooling (AWS GuardDuty, Azure Sentinel, GCP SCC)" },
       { name: "Multi-cloud detection and response across SaaS environments" },
       { name: "Unified DDoS incident response and mitigation framework" },
@@ -139,11 +139,18 @@ items: [
   {
     category: "⚙️ Automation, Scripting & Threat Intelligence",
     skills: [
-      { name: "Python, PowerShell, and JavaScript scripting for security automation" }
+      { name: "Python, PowerShell, and JavaScript scripting for security automation" },
+      { name: "Custom SOAR playbooks for threat response orchestration" },
+      { name: "Automated ingestion and enrichment of threat intel feeds" },
+      { name: "OSINT investigation and threat actor profiling" },
+      { name: "Adversary simulation and malware behaviour research" },
+      { name: "Integration of CTI into SOC workflows and detections" },
+      { name: "Tool development for automated triage and IOC processing" }
     ]
   }
 ]
-}]
+}
+];
 
   return (
     <section id="education" className="py-24 bg-gradient-hero">
