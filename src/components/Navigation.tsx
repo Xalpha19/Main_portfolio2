@@ -21,9 +21,9 @@ const Navigation = () => {
     { name: 'Home', href: '/' },
     { name: 'Experience', href: '/#experience' },
     { name: 'Education', href: '/#education' },
-    { name: 'Research', href: '/#research' },
-    { name: 'Journal', href: '/journal' },
-    { name: 'Contact', href: '/contact' },
+    { name: 'Projects', href: '/#projects' },
+    { name: 'Blog', href: 'https://journal.ishaansrv.com', external: true },
+    { name: "Let's Connect", href: '/#contact-bottom' },
   ];
 
   const handleNavClick = (href: string) => {
@@ -40,33 +40,49 @@ const Navigation = () => {
 
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      scrolled ? 'bg-background/80 backdrop-blur-lg border-b border-border' : 'bg-transparent'
+      scrolled ? 'bg-background/50 backdrop-blur-lg border-b border-border' : 'bg-transparent'
     }`}>
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-16">
           
           {/* Logo */}
-          <Link to="/" className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-            Portfolio
-          </Link>
+          <a href="https://ishaansrv.com" className="flex items-center">
+            <img 
+              src="/lovable-uploads/ca542af3-90d3-44d4-ba3d-09206934c8d0.png" 
+              alt="Ishaan Srivastava Logo" 
+              className="w-40 h-40 object-contain"
+            />
+          </a>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              <Link
-                key={item.name}
-                to={item.href}
-                onClick={() => handleNavClick(item.href)}
-                className={`text-sm font-medium transition-smooth hover:text-primary ${
-                  location.pathname === item.href || 
-                  (item.href === '/' && location.pathname === '/') ||
-                  (item.href.startsWith('/#') && location.pathname === '/')
-                    ? 'text-primary' 
-                    : 'text-muted-foreground'
-                }`}
-              >
-                {item.name}
-              </Link>
+              item.external ? (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm font-medium transition-smooth hover:text-primary text-muted-foreground"
+                >
+                  {item.name}
+                </a>
+              ) : (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  onClick={() => handleNavClick(item.href)}
+                  className={`text-sm font-medium transition-smooth hover:text-primary ${
+                    location.pathname === item.href || 
+                    (item.href === '/' && location.pathname === '/') ||
+                    (item.href.startsWith('/#') && location.pathname === '/')
+                      ? 'text-primary' 
+                      : 'text-muted-foreground'
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              )
             ))}
           </div>
 
@@ -86,20 +102,32 @@ const Navigation = () => {
           <div className="md:hidden bg-background/95 backdrop-blur-lg border-b border-border animate-slide-up">
             <div className="px-2 pt-2 pb-3 space-y-1">
               {navItems.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  onClick={() => handleNavClick(item.href)}
-                  className={`block px-3 py-2 text-sm font-medium transition-smooth hover:text-primary ${
-                    location.pathname === item.href || 
-                    (item.href === '/' && location.pathname === '/') ||
-                    (item.href.startsWith('/#') && location.pathname === '/')
-                      ? 'text-primary' 
-                      : 'text-muted-foreground'
-                  }`}
-                >
-                  {item.name}
-                </Link>
+                item.external ? (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block px-3 py-2 text-sm font-medium transition-smooth hover:text-primary text-muted-foreground"
+                  >
+                    {item.name}
+                  </a>
+                ) : (
+                  <Link
+                    key={item.name}
+                    to={item.href}
+                    onClick={() => handleNavClick(item.href)}
+                    className={`block px-3 py-2 text-sm font-medium transition-smooth hover:text-primary ${
+                      location.pathname === item.href || 
+                      (item.href === '/' && location.pathname === '/') ||
+                      (item.href.startsWith('/#') && location.pathname === '/')
+                        ? 'text-primary' 
+                        : 'text-muted-foreground'
+                    }`}
+                  >
+                    {item.name}
+                  </Link>
+                )
               ))}
             </div>
           </div>

@@ -1,8 +1,7 @@
-import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { GraduationCap, Award, BookOpen, Code } from "lucide-react";
+import { GraduationCap, BookOpen, Code } from "lucide-react";
 
 const Education = () => {
   const education = [
@@ -17,51 +16,26 @@ const Education = () => {
           period: "2023",
           location: "London, UK",
           gpa: "Distinction",
-          description: "Advanced studies in digital forensics, cybersecurity frameworks, and incident response methodologies. Specialized in malware analysis and threat intelligence.",
-          coursework: ["Digital Forensics", "Malware Analysis", "Network Security", "Threat Intelligence", "Incident Response", "Cyber Law"]
+          description: "Advanced degree focusing on digital forensics methodologies, cybersecurity frameworks, and incident response protocols.",
+          coursework: ["Digital Forensics", "Malware Analysis", "Network Security", "Incident Response", "Computer Law"]
         },
         {
-          degree: "Bachelor of Technology in Information Technology",
-          school: "University of Mumbai",
-          period: "2014 - 2018",
-          location: "Mumbai, India",
+          degree: "Post Graduate Diploma in Advanced Computing",
+          school: "Center of Development in Advanced Computing",
+          period: "2020",
+          location: "Noida, India",
+          gpa: "Merit",
+          description: "Specialized training in advanced computing concepts with focus on cybersecurity applications.",
+          coursework: ["Advanced Programming", "System Security", "Network Protocols", "Database Security", "Cryptography"]
+        },
+        {
+          degree: "Bachelor's in Technology - Information Technology",
+          school: "Symbiosis International University",
+          period: "2019",
+          location: "Pune, India",
           gpa: "First Class",
-          description: "Strong foundation in computer systems, networking, and information security. Final year project on 'Advanced Persistent Threat Detection Systems'.",
-          coursework: ["Computer Networks", "Information Security", "Database Systems", "System Administration", "Cryptography"]
-        }
-      ]
-    },
-    {
-      id: "certifications",
-      title: "Professional Certifications",
-      icon: Award,
-      items: [
-        {
-          name: "GIAC Certified Forensic Examiner (GCFE)",
-          issuer: "SANS Institute",
-          issued: "2023",
-          expires: "2027",
-          credential: "GCFE-2023-789012",
-          description: "Advanced certification in digital forensics and incident response, covering Windows forensics and timeline analysis.",
-          skills: ["Digital Forensics", "Windows Analysis", "Timeline Forensics", "Evidence Processing"]
-        },
-        {
-          name: "GIAC Certified Forensic Analyst (GCFA)",
-          issuer: "SANS Institute",
-          issued: "2022",
-          expires: "2026",
-          credential: "GCFA-2022-345678",
-          description: "Expert-level certification in advanced digital forensics and incident response methodologies.",
-          skills: ["Advanced Forensics", "Memory Analysis", "Network Forensics", "Threat Hunting"]
-        },
-        {
-          name: "Offensive Security Certified Professional (OSCP)",
-          issuer: "Offensive Security",
-          issued: "In Progress",
-          expires: "Lifetime",
-          credential: "Expected 2024",
-          description: "Hands-on penetration testing certification demonstrating practical security assessment skills.",
-          skills: ["Penetration Testing", "Exploitation", "Post-Exploitation", "Report Writing"]
+          description: "Foundation in information technology with specialization in security frameworks and system administration.",
+          coursework: ["Computer Networks", "Operating Systems", "Database Management", "Information Security", "Software Engineering"]
         }
       ]
     },
@@ -71,28 +45,40 @@ const Education = () => {
       icon: BookOpen,
       items: [
         {
-          name: "Advanced Persistent Threat (APT) Analysis",
-          platform: "SANS Institute",
-          completed: "2023",
-          instructor: "SANS FOR508",
-          description: "Comprehensive training on advanced digital forensics techniques for sophisticated attacks and APT campaigns.",
-          topics: ["Timeline Analysis", "Memory Forensics", "Network Analysis", "Malware Reverse Engineering", "Threat Attribution"]
+          name: "Recorded Future Threat Intelligence Analyst Training",
+          issuer: "Recorded Future",
+          issued: "2021",
+          expires: "N/A",
+          credential: "RF-TIA-2021",
+          description: "Advanced threat intelligence analysis methodologies and adversary tracking techniques for proactive defense strategies",
+          skills: ["Threat Intelligence", "Adversary Tracking", "TTP Analysis", "IOC Development"]
         },
         {
-          name: "Cloud Security & Forensics",
-          platform: "AWS Training",
-          completed: "2023",
-          instructor: "AWS Security Specialists",
-          description: "Specialized course covering security architecture and forensics in multi-cloud environments.",
-          topics: ["Cloud Incident Response", "AWS Security", "Azure Forensics", "GCP Security", "Container Security"]
+          name: "AttackIQ MITRE ATT&CK Security Stack for AWS",
+          issuer: "AttackIQ",
+          issued: "2023",
+          expires: "N/A",
+          credential: "AIQ-AWS-2023",
+          description: "Defending against MITRE TTPs on AWS services with automated security validation and continuous monitoring",
+          skills: ["MITRE ATT&CK", "AWS Security", "Security Validation", "Cloud Defense"]
         },
         {
-          name: "Threat Intelligence & Hunting",
-          platform: "MITRE ATT&CK",
-          completed: "2022",
-          instructor: "MITRE Corporation",
-          description: "Advanced threat hunting methodologies using MITRE ATT&CK framework and threat intelligence platforms.",
-          topics: ["ATT&CK Framework", "Threat Modeling", "IOC Analysis", "TTP Mapping", "Hunt Hypothesis"]
+          name: "AWS Security Essentials",
+          issuer: "Amazon Web Services",
+          issued: "2024",
+          expires: "2026",
+          credential: "AWS-SE-2024",
+          description: "Comprehensive cloud security fundamentals and best practices for AWS infrastructure protection",
+          skills: ["AWS Security", "Cloud Architecture", "IAM", "Security Monitoring"]
+        },
+        {
+          name: "Microsoft Defender XDR Administration Training",
+          issuer: "Microsoft",
+          issued: "2025",
+          expires: "2027",
+          credential: "MS-XDR-2025",
+          description: "Advanced endpoint detection and response administration for enterprise security operations",
+          skills: ["Microsoft Defender", "EDR", "XDR", "Threat Detection"]
         }
       ]
     },
@@ -102,34 +88,20 @@ const Education = () => {
       icon: Code,
       items: [
         {
-          category: "Digital Forensics & DFIR",
-          skills: [
-            { name: "Autopsy/Sleuth Kit", level: 95 },
-            { name: "Volatility (Memory Analysis)", level: 90 },
-            { name: "KAPE/Timeline Analysis", level: 95 },
-            { name: "X-Ways Forensics", level: 85 },
-            { name: "Mobile Forensics", level: 80 }
-          ]
+          category: "🔍 Threat Hunting & Analysis",
+          skills: ["Threat Hunting & Detection Engineering", "Advanced TTP and hypothesis-driven threat hunting", "Custom detection rule development (SIEM, EDR, XDR)", "MITRE ATT&CK alignment and use-case mapping", "Behavioral and anomaly-based detection", "Query development using KQL, Splunk SPL, and SQL", "Dashboard creation and threat visualisation", "Detection gap analysis via purple teaming exercises"]
         },
         {
-          category: "Security Tools & SIEM",
-          skills: [
-            { name: "Splunk", level: 95 },
-            { name: "Elastic Stack (ELK)", level: 90 },
-            { name: "QRadar", level: 85 },
-            { name: "Chronicle/Sumo Logic", level: 80 },
-            { name: "KQL (Kusto Query)", level: 90 }
-          ]
+          category: "🧪 Digital Forensics & DFIR",
+          skills: ["Disk, memory, network, and cloud forensics (AWS, Azure, GCP)", "Root cause analysis and incident triage", "Email and phishing analysis using OSINT and threat platforms", "Incident containment, eradication, and recovery procedures", "Evidence handling, forensic tooling, and chain of custody", "Automated forensic data acquisition and triage scripting", "Deception-based detection to reduce dwell time"]
         },
         {
-          category: "Threat Hunting & Analysis",
-          skills: [
-            { name: "MITRE ATT&CK", level: 95 },
-            { name: "YARA Rules", level: 90 },
-            { name: "Sigma Rules", level: 85 },
-            { name: "Threat Intelligence", level: 90 },
-            { name: "Malware Analysis", level: 85 }
-          ]
+          category: "☁️ Cloud & Endpoint Security",
+          skills: ["Endpoint threat detection using Trellix, Carbon Black, Defender XDR, etc.", "Host-based and behavioural intrusion analysis", "Cloud-native security tooling (AWS GuardDuty, Azure Sentinel, GCP SCC)", "Multi-cloud detection and response across SaaS environments", "Unified DDoS incident response and mitigation framework", "Cloud log analysis and cross-platform threat correlation"]
+        },
+        {
+          category: "⚙️ Security Automation",
+          skills: ["Automation, Scripting for ingestion of Threat Intelligence using REST API", "Python, PowerShell, and JavaScript scripting", "Custom SOAR playbooks for threat response orchestration", "Automated ingestion and enrichment of threat intel feeds", "OSINT investigation and threat actor profiling", "Adversary simulation and malware behavioral research", "Integration of CTI into SOC workflows and detections", "Tool development for automated triage and IOC processing"]
         }
       ]
     }
@@ -149,7 +121,7 @@ const Education = () => {
 
         <div className="max-w-6xl mx-auto">
           <Tabs defaultValue="degree" className="w-full">
-            <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 bg-card/50 border border-border">
+            <TabsList className="grid w-full grid-cols-3 bg-card/50 border border-border">
               {education.map((section) => (
                 <TabsTrigger 
                   key={section.id}
@@ -172,20 +144,13 @@ const Education = () => {
                           <CardTitle className="text-xl">{skillGroup.category}</CardTitle>
                         </CardHeader>
                         <CardContent className="space-y-4">
-                          {skillGroup.skills.map((skill, skillIndex) => (
-                            <div key={skillIndex}>
-                              <div className="flex justify-between mb-2">
-                                <span className="font-medium">{skill.name}</span>
-                                <span className="text-sm text-muted-foreground">{skill.level}%</span>
-                              </div>
-                              <div className="w-full bg-secondary rounded-full h-2">
-                                <div 
-                                  className="bg-gradient-primary h-2 rounded-full glow-purple" 
-                                  style={{ width: `${skill.level}%` }}
-                                ></div>
-                              </div>
-                            </div>
-                          ))}
+                          <div className="flex flex-wrap gap-2">
+                            {skillGroup.skills.map((skill, skillIndex) => (
+                              <Badge key={skillIndex} variant="secondary" className="bg-primary/20 text-primary">
+                                {skill}
+                              </Badge>
+                            ))}
+                          </div>
                         </CardContent>
                       </Card>
                     ))}
@@ -223,6 +188,33 @@ const Education = () => {
                               </div>
                             </div>
                           ) : section.id === "certifications" ? (
+                            <div>
+                              <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4">
+                                <div>
+                                  <h3 className="text-2xl font-bold text-primary mb-2">{item.name}</h3>
+                                  <p className="text-lg font-medium mb-2">{item.issuer}</p>
+                                  <div className="flex flex-wrap gap-4 text-muted-foreground mb-4">
+                                    <span>Issued: {item.issued}</span>
+                                    <span>•</span>
+                                    <span>Expires: {item.expires}</span>
+                                    <span>•</span>
+                                    <span>ID: {item.credential}</span>
+                                  </div>
+                                </div>
+                              </div>
+                              <p className="text-muted-foreground mb-6">{item.description}</p>
+                              <div>
+                                <h4 className="font-semibold mb-3">Key Skills:</h4>
+                                <div className="flex flex-wrap gap-2">
+                                  {item.skills.map((skill) => (
+                                    <Badge key={skill} variant="secondary" className="bg-primary/20 text-primary">
+                                      {skill}
+                                    </Badge>
+                                  ))}
+                                </div>
+                              </div>
+                            </div>
+                          ) : section.id === "courses" ? (
                             <div>
                               <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4">
                                 <div>

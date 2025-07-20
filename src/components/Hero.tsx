@@ -1,6 +1,5 @@
-import { ArrowDown, Github, Linkedin, Mail, Shield, Search, Lock } from "lucide-react";
+import { ArrowDown, Linkedin, Mail, Shield, Search, Lock, MapPin, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
 
 const Hero = () => {
   const scrollToNextSection = () => {
@@ -10,13 +9,8 @@ const Hero = () => {
 
   return (
     <section className="min-h-screen relative flex items-center justify-center">
-      {/* Pure CSS Hero Background */}
+      {/* Clean CSS Gradient Background with Tech Patterns */}
       <div className="absolute inset-0 hero-gradient-bg">
-        {/* CSS-only floating elements */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/15 rounded-full blur-3xl animate-float glow-gold"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl animate-float" style={{animationDelay: '2s'}}></div>
-        <div className="absolute top-1/2 right-1/3 w-48 h-48 bg-accent/8 rounded-full blur-2xl animate-float" style={{animationDelay: '4s'}}></div>
-        
         {/* DFIR themed floating icons */}
         <div className="absolute top-1/3 right-1/4 animate-float" style={{ animationDelay: '1s' }}>
           <Shield className="w-12 h-12 text-primary/30" />
@@ -29,11 +23,14 @@ const Hero = () => {
         </div>
       </div>
       
-      {/* Content Overlay with Enhanced Readability */}
+      {/* Content with Professional Information */}
       <div className="container mx-auto px-6 text-center relative z-10">
-        <div className="animate-slide-up bg-gradient-to-r from-background/95 via-background/70 to-background/50 backdrop-blur-sm rounded-2xl p-8 border border-primary/20">
-          <div className="mb-4">
-            <span className="text-accent font-medium text-lg tracking-wider">SENIOR DFIR SPECIALIST</span>
+        <div className="animate-slide-up bg-gradient-to-r from-background/18 via-background/12 to-background/8 backdrop-blur-sm rounded-2xl p-8 border border-primary/20">
+          {/* Professional Tagline */}
+          <div className="mb-6">
+            <span className="text-primary font-medium text-base tracking-wide">
+              SENIOR THREAT HUNTING AND INCIDENCE RESPONSE ANALYST
+            </span>
           </div>
           
           <h1 className="text-6xl md:text-8xl font-bold mb-6 glow-text">
@@ -43,18 +40,17 @@ const Hero = () => {
             </span>
           </h1>
           
-          <h2 className="text-2xl md:text-3xl font-semibold text-primary mb-4">
-            Digital Forensics & Incident Response
-          </h2>
-          
-          <h3 className="text-xl md:text-2xl text-accent mb-8">
-            Threat Hunting Researcher
-          </h3>
+          {/* Location */}
+          <div className="flex items-center justify-center gap-2 mb-6">
+            <MapPin className="w-5 h-5 text-primary" />
+            <span className="text-lg text-muted-foreground">Edinburgh, Scotland, 🇬🇧</span>
+          </div>
           
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-8 leading-relaxed">
             "Protecting digital assets through advanced forensics and proactive threat detection"
           </p>
           
+          {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <Button 
               size="lg" 
@@ -67,23 +63,23 @@ const Hero = () => {
               variant="outline" 
               size="lg" 
               className="btn-outline-enhanced text-lg px-8 py-6"
+              asChild
             >
-              Download Resume
+              <a 
+                href="/lovable-uploads/Ishaan_Srivastava_Resume.pdf" 
+                download="Ishaan_Srivastava_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Download Resume
+              </a>
             </Button>
           </div>
           
-          {/* Social Links */}
+          {/* Professional Links */}
           <div className="flex justify-center gap-6">
             <a 
-              href="https://github.com/ishaansrivastava" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="w-12 h-12 card-enhanced rounded-lg flex items-center justify-center cyber-hover group"
-            >
-              <Github className="w-6 h-6 text-muted-foreground group-hover:text-primary transition-colors" />
-            </a>
-            <a 
-              href="https://linkedin.com/in/ishaan-srivastava" 
+              href="https://linkedin.com/in/ishaansri" 
               target="_blank" 
               rel="noopener noreferrer"
               className="w-12 h-12 card-enhanced rounded-lg flex items-center justify-center cyber-hover group"
@@ -91,10 +87,18 @@ const Hero = () => {
               <Linkedin className="w-6 h-6 text-muted-foreground group-hover:text-primary transition-colors" />
             </a>
             <a 
-              href="mailto:ishaansrivastava@proton.me"
+              href="mailto:contact@ishaansrv.com"
               className="w-12 h-12 card-enhanced rounded-lg flex items-center justify-center cyber-hover group"
             >
               <Mail className="w-6 h-6 text-muted-foreground group-hover:text-primary transition-colors" />
+            </a>
+            <a 
+              href="https://x.com/X19Alpha" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="w-12 h-12 card-enhanced rounded-lg flex items-center justify-center cyber-hover group"
+            >
+              <Twitter className="w-6 h-6 text-muted-foreground group-hover:text-primary transition-colors" />
             </a>
           </div>
         </div>
