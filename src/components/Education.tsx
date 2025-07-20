@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { GraduationCap, BookOpen, Code } from "lucide-react";
+import { GraduationCap, BookOpen, Code, Shield } from "lucide-react";
 
 const Education = () => {
   const education = [
@@ -104,7 +104,7 @@ const Education = () => {
           skills: ["Automation, Scripting for ingestion of Threat Intelligence using REST API", "Python, PowerShell, and JavaScript scripting", "Custom SOAR playbooks for threat response orchestration", "Automated ingestion and enrichment of threat intel feeds", "OSINT investigation and threat actor profiling", "Adversary simulation and malware behavioral research", "Integration of CTI into SOC workflows and detections", "Tool development for automated triage and IOC processing"]
         }
       ]
-    }
+    },
   ];
 
   return (

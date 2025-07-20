@@ -4,19 +4,70 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useToast } from "@/hooks/use-toast";
+
 const ContactSection = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: ""
   });
-  const {
-    toast
-  } = useToast();
+  const [captcha, setCaptcha] = useState({ question: "", answer: 0 });
+  const [captchaInput, setCaptchaInput] = useState("");
+  const { toast } = useToast();
+
+  // Generate random math captcha
+  const generateCaptcha = () => {
+    const num1 = Math.floor(Math.random() * 10) + 1;
+    const num2 = Math.floor(Math.random() * 10) + 1;
+    const operations = ['+', '-', '*'];
+    const operation = operations[Math.floor(Math.random() * operations.length)];
+    
+    let answer;
+    let question;
+    
+    switch(operation) {
+      case '+':
+        answer = num1 + num2;
+        question = `${num1} + ${num2}`;
+        break;
+      case '-':
+        answer = num1 - num2;
+        question = `${num1} - ${num2}`;
+        break;
+      case '*':
+        answer = num1 * num2;
+        question = `${num1} × ${num2}`;
+        break;
+      default:
+        answer = num1 + num2;
+        question = `${num1} + ${num2}`;
+    }
+    
+    setCaptcha({ question, answer });
+  };
+
+  // Generate captcha on component mount
+  useEffect(() => {
+    generateCaptcha();
+  }, []);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validate captcha
+    if (parseInt(captchaInput) !== captcha.answer) {
+      toast({
+        title: "Captcha Failed",
+        description: "Please solve the math problem correctly.",
+        variant: "destructive"
+      });
+      generateCaptcha(); // Generate new captcha
+      setCaptchaInput("");
+      return;
+    }
+    
     // Here you would typically send the form data to your backend
     toast({
       title: "Message Sent!",
@@ -27,33 +78,108 @@ const ContactSection = () => {
       email: "",
       message: ""
     });
+    setCaptchaInput("");
+    generateCaptcha(); // Generate new captcha for next submission
   };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData(prev => ({
       ...prev,
       [e.target.name]: e.target.value
     }));
   };
-  return <section className="py-24 relative">
-      
+
+  return (
+    <section className="py-24 relative">
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-6xl font-bold mb-6 glow-text">
             Let's Connect
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Open for cybersecurity consulting, DFIR projects, and collaboration opportunities.
+            Open to cybersecurity consultation, research engagements, and professional partnerships.
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12">
             
-            {/* Contact Info */}
-            <div className="space-y-8">
+            {/* Quick Contact Form - Moved Left */}
+            <div className="lg:order-1">
+              <Card className="bg-gradient-card border-border/20 glow-purple">
+                <CardContent className="p-8">
+                  <h3 className="text-2xl font-bold mb-6">Quick Message</h3>
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div>
+                      <label htmlFor="quick-name" className="block text-sm font-medium mb-2">
+                        Name
+                      </label>
+                      <Input id="quick-name" name="name" value={formData.name} onChange={handleChange} required className="bg-background/50 border-border focus:border-primary" placeholder="Your name" />
+                    </div>
+                    
+                    <div>
+                      <label htmlFor="quick-email" className="block text-sm font-medium mb-2">
+                        Email
+                      </label>
+                      <Input id="quick-email" name="email" type="email" value={formData.email} onChange={handleChange} required className="bg-background/50 border-border focus:border-primary" placeholder="your.email@example.com" />
+                    </div>
+                    
+                    <div>
+                      <label htmlFor="quick-message" className="block text-sm font-medium mb-2">
+                        Message
+                      </label>
+                      <Textarea id="quick-message" name="message" value={formData.message} onChange={handleChange} required rows={9} className="bg-background/50 border-border focus:border-primary resize-none" placeholder="Tell me about your project..." />
+                    </div>
+                    
+                    {/* Visual Captcha */}
+                    <div>
+                      <label className="block text-sm font-medium mb-3">
+                        Security Check
+                      </label>
+                      <div className="bg-gradient-to-r from-primary/10 to-secondary/10 border-2 border-dashed border-primary/30 rounded-lg p-4 mb-3">
+                        <div className="flex items-center justify-center space-x-3">
+                          <div className="bg-background/80 rounded-lg px-4 py-2 text-2xl font-bold text-primary border border-primary/20">
+                            {captcha.question.split(' ')[0]}
+                          </div>
+                          <div className="text-3xl font-bold text-primary glow-text">
+                            {captcha.question.split(' ')[1]}
+                          </div>
+                          <div className="bg-background/80 rounded-lg px-4 py-2 text-2xl font-bold text-primary border border-primary/20">
+                            {captcha.question.split(' ')[2]}
+                          </div>
+                          <div className="text-3xl font-bold text-primary glow-text">
+                            =
+                          </div>
+                          <div className="text-2xl font-bold text-muted-foreground">
+                            ?
+                          </div>
+                        </div>
+                      </div>
+                      <Input 
+                        id="captcha" 
+                        type="number" 
+                        value={captchaInput} 
+                        onChange={(e) => setCaptchaInput(e.target.value)} 
+                        required 
+                        className="bg-background/50 border-border focus:border-primary text-center text-lg font-semibold" 
+                        placeholder="Enter your answer" 
+                      />
+                    </div>
+                    
+                    <Button type="submit" className="w-full bg-gradient-primary glow-purple" size="lg">
+                      <Send className="w-4 h-4 mr-2" />
+                      Send Message
+                    </Button>
+                  </form>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Contact Info - Moved Right */}
+            <div className="lg:order-2 space-y-8">
               <Card className="bg-gradient-card border-border/50 glow-purple">
                 <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold mb-6">Get In Touch</h3>
+                  <h3 className="text-2xl font-bold mb-6">Let's Connect</h3>
                   <div className="space-y-6">
                     
                     <div className="flex items-center gap-4">
@@ -109,9 +235,9 @@ const ContactSection = () => {
                       </Button>
                     </a>
                     <img 
-                      src="/lovable-uploads/16a0b86d-3467-4726-9866-9e79c3ae6d39.png" 
+                      src="/lovable-uploads/45f71e23-7955-4485-81aa-9112ced904d2.png" 
                       alt="QR Code" 
-                      className="w-full rounded-lg"
+                      className="w-2/5 rounded-lg mx-auto"
                     />
                   </div>
 
@@ -144,44 +270,12 @@ const ContactSection = () => {
                 </CardContent>
               </Card>
             </div>
-
-            {/* Quick Contact Form */}
-            <Card className="bg-gradient-card border-border/50 glow-purple">
-              <CardContent className="p-8">
-                <h3 className="text-2xl font-bold mb-6">Quick Message</h3>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div>
-                    <label htmlFor="quick-name" className="block text-sm font-medium mb-2">
-                      Name
-                    </label>
-                    <Input id="quick-name" name="name" value={formData.name} onChange={handleChange} required className="bg-background/50 border-border focus:border-primary" placeholder="Your name" />
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="quick-email" className="block text-sm font-medium mb-2">
-                      Email
-                    </label>
-                    <Input id="quick-email" name="email" type="email" value={formData.email} onChange={handleChange} required className="bg-background/50 border-border focus:border-primary" placeholder="your.email@example.com" />
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="quick-message" className="block text-sm font-medium mb-2">
-                      Message
-                    </label>
-                    <Textarea id="quick-message" name="message" value={formData.message} onChange={handleChange} required rows={4} className="bg-background/50 border-border focus:border-primary resize-none" placeholder="Tell me about your project..." />
-                  </div>
-                  
-                  <Button type="submit" className="w-full bg-gradient-primary glow-purple" size="lg">
-                    <Send className="w-4 h-4 mr-2" />
-                    Send Message
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
           </div>
         </div>
       </div>
       <div id="contact-bottom"></div>
-    </section>;
+    </section>
+  );
 };
+
 export default ContactSection;
