@@ -1,41 +1,226 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" href="/lovable-uploads/c5eeaf58-c7e6-4b7d-b38f-c2527cb49448.png" type="image/png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, shrink-to-fit=no, user-scalable=yes, minimum-scale=1.0, maximum-scale=5.0" />
+    
+    <!-- Enhanced Mobile-First viewport meta tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover, shrink-to-fit=no" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="format-detection" content="telephone=no" />
+    
+    <!-- Enhanced mobile compatibility -->
+    <meta name="format-detection" content="telephone=no, date=no, email=no, address=no" />
+    <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="Ishaan Srivastava" />
-    <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="msapplication-TileColor" content="#8B5CF6" />
-    <meta name="theme-color" content="#8B5CF6" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#1a1a2e" media="(prefers-color-scheme: dark)" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    
+    <!-- Enhanced theme colors for mobile browsers -->
+    <meta name="theme-color" content="#d4af37" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0a0612" media="(prefers-color-scheme: dark)" />
+    <meta name="msapplication-TileColor" content="#d4af37" />
+    <meta name="msapplication-navbutton-color" content="#d4af37" />
+    
+    <!-- Enhanced performance hints -->
+    <meta name="dns-prefetch" content="//fonts.googleapis.com" />
+    <meta name="preconnect" content="https://fonts.googleapis.com" crossorigin />
+    <meta name="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+    
     <title>Ishaan Srivastava | Senior DFIR Specialist & Threat Hunter | Edinburgh</title>
     <meta name="description" content="Senior Digital Forensics & Incident Response specialist with 4+ years experience in cybersecurity, threat hunting, and malware analysis. Based in Edinburgh, Scotland.">
     <meta name="keywords" content="digital forensics, incident response, threat hunting, cybersecurity, DFIR, malware analysis, Edinburgh, Ishaan Srivastava">
     <meta name="author" content="Ishaan Srivastava" />
 
-    <meta property="og:title" content="Ishaan Srivastava" />
-<!--     <meta property="og:description" content="Lovable Generated Project" /> -->
+    <!-- Enhanced Open Graph tags -->
+    <meta property="og:title" content="Ishaan Srivastava | Senior DFIR Specialist" />
+    <meta property="og:description" content="Senior Digital Forensics & Incident Response specialist with 4+ years experience in cybersecurity, threat hunting, and malware analysis." />
     <meta property="og:type" content="website" />
-<!--     <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" /> -->
+    <meta property="og:url" content="https://ishaansrv.com" />
+    <meta property="og:image" content="/lovable-uploads/0e5e242a-c425-4668-acb8-5dda74e3b6ef.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:site_name" content="Ishaan Srivastava Portfolio" />
 
+    <!-- Enhanced Twitter Card tags -->
     <meta name="twitter:card" content="summary_large_image" />
-<!--     <meta name="twitter:site" content="@lovable_dev" /> -->
-<!--     <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" /> -->
+    <meta name="twitter:title" content="Ishaan Srivastava | Senior DFIR Specialist" />
+    <meta name="twitter:description" content="Senior Digital Forensics & Incident Response specialist with 4+ years experience in cybersecurity, threat hunting, and malware analysis." />
+    <meta name="twitter:image" content="/lovable-uploads/0e5e242a-c425-4668-acb8-5dda74e3b6ef.png" />
+    
+    <!-- Enhanced security headers -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https:; media-src 'self' https:;" />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="DENY" />
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+    
+    <!-- Enhanced mobile icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/lovable-uploads/c5eeaf58-c7e6-4b7d-b38f-c2527cb49448.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/lovable-uploads/c5eeaf58-c7e6-4b7d-b38f-c2527cb49448.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/lovable-uploads/c5eeaf58-c7e6-4b7d-b38f-c2527cb49448.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="mask-icon" href="/lovable-uploads/c5eeaf58-c7e6-4b7d-b38f-c2527cb49448.png" color="#d4af37" />
+    
+    <!-- Enhanced critical CSS for mobile -->
+    <style>
+      /* Critical CSS for immediate mobile rendering */
+      html, body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        background-color: #0a0612;
+        color: #f5f5dc;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+        font-size: 16px;
+      }
+      
+      /* Mobile-first viewport handling */
+      html {
+        height: 100%;
+        height: -webkit-fill-available;
+      }
+      
+      body {
+        min-height: 100vh;
+        min-height: -webkit-fill-available;
+        position: relative;
+        width: 100%;
+        max-width: 100vw;
+      }
+      
+      #root {
+        min-height: 100vh;
+        min-height: -webkit-fill-available;
+        overflow-x: hidden;
+        position: relative;
+        width: 100%;
+        max-width: 100vw;
+      }
+      
+      /* Enhanced loading spinner for mobile */
+      .loading-spinner {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 40px;
+        height: 40px;
+        border: 4px solid #d4af37;
+        border-top: 4px solid transparent;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        z-index: 9999;
+      }
+      
+      @keyframes spin {
+        0% { transform: translate(-50%, -50%) rotate(0deg); }
+        100% { transform: translate(-50%, -50%) rotate(360deg); }
+      }
+      
+      /* Prevent zoom on input focus (iOS) */
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      input[type="number"],
+      input[type="password"],
+      input[type="url"],
+      input[type="search"],
+      select,
+      textarea {
+        font-size: 16px !important;
+        max-width: 100%;
+      }
+      
+      /* Enhanced touch targets */
+      button, a, [role="button"] {
+        min-height: 48px;
+        min-width: 48px;
+        position: relative;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+      }
+      
+      /* Mobile-specific scrolling */
+      body, html {
+        overscroll-behavior: contain;
+        -webkit-overflow-scrolling: touch;
+      }
+      
+      /* Performance optimization for mobile */
+      * {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+      }
+    </style>
   </head>
 
   <body>
     <noscript>
-      <div style="text-align: center; padding: 50px; font-family: Arial, sans-serif;">
-        <h1>JavaScript Required</h1>
-        <p>This application requires JavaScript to function properly. Please enable JavaScript in your browser settings.</p>
+      <div style="text-align: center; padding: 50px; font-family: Arial, sans-serif; background-color: #0a0612; color: #f5f5dc; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+        <h1 style="color: #d4af37; margin-bottom: 20px;">JavaScript Required</h1>
+        <p style="max-width: 600px; line-height: 1.6;">This application requires JavaScript to function properly. Please enable JavaScript in your browser settings and refresh the page.</p>
+        <p style="margin-top: 20px; font-size: 14px; opacity: 0.8;">For the best experience, please use a modern browser with JavaScript enabled.</p>
       </div>
     </noscript>
+    
+    <!-- Loading spinner -->
+    <div id="loading-spinner" class="loading-spinner"></div>
+    
     <div id="root"></div>
+    
     <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- Enhanced mobile optimizations -->
+    <script>
+      // Remove loading spinner when page loads
+      window.addEventListener('load', function() {
+        const spinner = document.getElementById('loading-spinner');
+        if (spinner) {
+          spinner.style.display = 'none';
+        }
+      });
+      
+      // Enhanced mobile viewport handling
+      function handleViewportChange() {
+        const vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+      }
+      
+      handleViewportChange();
+      window.addEventListener('resize', handleViewportChange);
+      window.addEventListener('orientationchange', function() {
+        setTimeout(handleViewportChange, 100);
+      });
+      
+      // Enhanced error handling
+      window.addEventListener('error', function(e) {
+        console.error('Global error:', e.error);
+      });
+      
+      window.addEventListener('unhandledrejection', function(e) {
+        console.error('Unhandled promise rejection:', e.reason);
+      });
+      
+      // Enhanced touch optimization
+      document.addEventListener('touchstart', function() {}, { passive: true });
+      document.addEventListener('touchmove', function() {}, { passive: true });
+      
+      // Service worker registration
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('/sw.js').catch(function(error) {
+            console.log('ServiceWorker registration failed: ', error);
+          });
+        });
+      }
+    </script>
   </body>
 </html>
