@@ -6,16 +6,38 @@ import { Textarea } from "@/components/ui/textarea";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useToast } from "@/hooks/use-toast";
-
+import { motion } from "framer-motion";
+import { useScrollAnimation, fadeInUpVariants, fadeInLeftVariants, fadeInRightVariants } from "@/hooks/useScrollAnimation";
 const ContactSection = () => {
+  const {
+    ref: sectionRef,
+    controls: sectionControls
+  } = useScrollAnimation(0.1);
+  const {
+    ref: titleRef,
+    controls: titleControls
+  } = useScrollAnimation(0.2);
+  const {
+    ref: formRef,
+    controls: formControls
+  } = useScrollAnimation(0.2);
+  const {
+    ref: infoRef,
+    controls: infoControls
+  } = useScrollAnimation(0.2);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: ""
   });
-  const [captcha, setCaptcha] = useState({ question: "", answer: 0 });
+  const [captcha, setCaptcha] = useState({
+    question: "",
+    answer: 0
+  });
   const [captchaInput, setCaptchaInput] = useState("");
-  const { toast } = useToast();
+  const {
+    toast
+  } = useToast();
 
   // Generate random math captcha
   const generateCaptcha = () => {
@@ -23,11 +45,9 @@ const ContactSection = () => {
     const num2 = Math.floor(Math.random() * 10) + 1;
     const operations = ['+', '-', '*'];
     const operation = operations[Math.floor(Math.random() * operations.length)];
-    
     let answer;
     let question;
-    
-    switch(operation) {
+    switch (operation) {
       case '+':
         answer = num1 + num2;
         question = `${num1} + ${num2}`;
@@ -44,18 +64,19 @@ const ContactSection = () => {
         answer = num1 + num2;
         question = `${num1} + ${num2}`;
     }
-    
-    setCaptcha({ question, answer });
+    setCaptcha({
+      question,
+      answer
+    });
   };
 
   // Generate captcha on component mount
   useEffect(() => {
     generateCaptcha();
   }, []);
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Validate captcha
     if (parseInt(captchaInput) !== captcha.answer) {
       toast({
@@ -67,7 +88,7 @@ const ContactSection = () => {
       setCaptchaInput("");
       return;
     }
-    
+
     // Here you would typically send the form data to your backend
     toast({
       title: "Message Sent!",
@@ -81,102 +102,72 @@ const ContactSection = () => {
     setCaptchaInput("");
     generateCaptcha(); // Generate new captcha for next submission
   };
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData(prev => ({
       ...prev,
       [e.target.name]: e.target.value
     }));
   };
-
-  return (
-    <section className="py-24 relative">
+  return <motion.section ref={sectionRef} initial="hidden" animate={sectionControls} variants={fadeInUpVariants} id="contact" className="py-24 relative">
       <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center mb-16">
+        <motion.div ref={titleRef} initial="hidden" animate={titleControls} variants={fadeInUpVariants} className="text-center mb-16">
           <h2 className="text-4xl md:text-6xl font-bold mb-6 glow-text">
             Let's Connect
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Open to cybersecurity consultation, research engagements, and professional partnerships.
           </p>
-        </div>
+        </motion.div>
 
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12">
             
             {/* Quick Contact Form - Moved Left */}
-            <div className="lg:order-1">
+            <motion.div ref={formRef} initial="hidden" animate={formControls} variants={fadeInLeftVariants} className="lg:order-1">
               <Card className="bg-gradient-card border-border/20 glow-purple">
                 <CardContent className="p-8">
                   <h3 className="text-2xl font-bold mb-6">Quick Message</h3>
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div>
-                      <label htmlFor="quick-name" className="block text-sm font-medium mb-2">
-                        Name
-                      </label>
-                      <Input id="quick-name" name="name" value={formData.name} onChange={handleChange} required className="bg-background/50 border-border focus:border-primary" placeholder="Your name" />
+                  <p className="text-sm text-muted-foreground mb-6">
+                    For detailed inquiries, please use the <Link to="/contact" className="text-primary hover:underline">secure contact form</Link>.
+                  </p>
+                  
+                  <div className="space-y-6">
+                    <div className="p-4 bg-primary/10 rounded-lg border border-primary/20">
+                      <h4 className="font-semibold text-primary mb-2">Professional Consultation</h4>
+                      <p className="text-sm text-muted-foreground">
+                        For cybersecurity consultation, threat hunting services, or incident response support.
+                      </p>
                     </div>
                     
-                    <div>
-                      <label htmlFor="quick-email" className="block text-sm font-medium mb-2">
-                        Email
-                      </label>
-                      <Input id="quick-email" name="email" type="email" value={formData.email} onChange={handleChange} required className="bg-background/50 border-border focus:border-primary" placeholder="your.email@example.com" />
+                    <div className="p-4 bg-secondary/10 rounded-lg border border-secondary/20">
+                      <h4 className="font-semibold text-secondary mb-2">Research Collaboration</h4>
+                      <p className="text-sm text-muted-foreground">
+                        Academic partnerships, research projects, and knowledge sharing opportunities.
+                      </p>
                     </div>
                     
-                    <div>
-                      <label htmlFor="quick-message" className="block text-sm font-medium mb-2">
-                        Message
-                      </label>
-                      <Textarea id="quick-message" name="message" value={formData.message} onChange={handleChange} required rows={9} className="bg-background/50 border-border focus:border-primary resize-none" placeholder="Tell me about your project..." />
+                    <div className="p-4 bg-accent/10 rounded-lg border border-accent/20">
+                      <h4 className="font-semibold text-accent mb-2">Speaking Engagements</h4>
+                      <p className="text-sm text-muted-foreground">
+                        Conference presentations, workshops, and cybersecurity training sessions.
+                      </p>
                     </div>
-                    
-                    {/* Visual Captcha */}
-                    <div>
-                      <label className="block text-sm font-medium mb-3">
-                        Security Check
-                      </label>
-                      <div className="bg-gradient-to-r from-primary/10 to-secondary/10 border-2 border-dashed border-primary/30 rounded-lg p-4 mb-3">
-                        <div className="flex items-center justify-center space-x-3">
-                          <div className="bg-background/80 rounded-lg px-4 py-2 text-2xl font-bold text-primary border border-primary/20">
-                            {captcha.question.split(' ')[0]}
-                          </div>
-                          <div className="text-3xl font-bold text-primary glow-text">
-                            {captcha.question.split(' ')[1]}
-                          </div>
-                          <div className="bg-background/80 rounded-lg px-4 py-2 text-2xl font-bold text-primary border border-primary/20">
-                            {captcha.question.split(' ')[2]}
-                          </div>
-                          <div className="text-3xl font-bold text-primary glow-text">
-                            =
-                          </div>
-                          <div className="text-2xl font-bold text-muted-foreground">
-                            ?
-                          </div>
-                        </div>
-                      </div>
-                      <Input 
-                        id="captcha" 
-                        type="number" 
-                        value={captchaInput} 
-                        onChange={(e) => setCaptchaInput(e.target.value)} 
-                        required 
-                        className="bg-background/50 border-border focus:border-primary text-center text-lg font-semibold" 
-                        placeholder="Enter your answer" 
-                      />
-                    </div>
-                    
-                    <Button type="submit" className="w-full bg-gradient-primary glow-purple" size="lg">
-                      <Send className="w-4 h-4 mr-2" />
-                      Send Message
-                    </Button>
-                  </form>
+                  </div>
+                  
+                  <div className="mt-6 pt-6 border-t border-border">
+                    <Link to="/contact">
+                      <Button className="w-full bg-gradient-primary glow-purple" size="lg">
+                        <Send className="w-4 h-4 mr-2" />
+                        Open Secure Contact Form
+                      </Button>
+                    </Link>
+                  </div>
                 </CardContent>
               </Card>
-            </div>
+            </motion.div>
 
             {/* Contact Info - Moved Right */}
-            <div className="lg:order-2 space-y-8">
+            <motion.div ref={infoRef} initial="hidden" animate={infoControls} variants={fadeInRightVariants} className="lg:order-2 space-y-8">
               <Card className="bg-gradient-card border-border/50 glow-purple">
                 <CardContent className="p-8">
                   <h3 className="text-2xl font-bold mb-6">Let's Connect</h3>
@@ -214,31 +205,19 @@ const ContactSection = () => {
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center glow-purple">
-                        <Calendar className="w-6 h-6 text-primary" />
-                      </div>
-                      <div>
-                        <p className="font-medium">Calendly</p>
-                        <a href="https://calendly.com/ishaansr" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-smooth">
-                          Schedule a Meeting
-                        </a>
-                      </div>
-                    </div>
+                    
                   </div>
 
                   <div className="mt-8 pt-8 border-t border-border space-y-3">
-                    <a href="https://calendly.com/ishaansr" target="_blank" rel="noopener noreferrer">
+                    <a href="https://calendly.com/ishaansr/30min" target="_blank" rel="noopener noreferrer">
                       <Button className="w-full bg-gradient-primary glow-purple mb-3" size="lg">
                         <Calendar className="w-4 h-4 mr-2" />
                         Schedule a Meeting
                       </Button>
                     </a>
-                    <img 
-                      src="/lovable-uploads/45f71e23-7955-4485-81aa-9112ced904d2.png" 
-                      alt="QR Code" 
-                      className="w-2/5 rounded-lg mx-auto"
-                    />
+                    <a href="https://linktr.ee/ishaansri" target="_blank" rel="noopener noreferrer">
+                      <img src="/lovable-uploads/45f71e23-7955-4485-81aa-9112ced904d2.png" alt="QR Code" className="w-2/5 rounded-lg mx-auto cursor-pointer hover:opacity-80 transition-opacity" />
+                    </a>
                   </div>
 
                   {/* Professional Links */}
@@ -260,22 +239,25 @@ const ContactSection = () => {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
                         </svg>
                       </a>
-                      <a href="https://icybersec.wixsite.com/ishaans" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center hover:bg-primary/30 transition-smooth glow-purple" title="Technical Portfolio">
-                        <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14-7H5a2 2 0 00-2 2v12a2 2 0 002 2h14a2 2 0 002-2V6a2 2 0 00-2-2z" />
+                      <a href="https://discordapp.com/users/636054320575414273" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center hover:bg-primary/30 transition-smooth glow-purple" title="Discord Profile">
+                        <svg className="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.191.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/>
+                        </svg>
+                      </a>
+                      <a href="https://x.com/X19Alpha" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center hover:bg-primary/30 transition-smooth glow-purple" title="Twitter X Profile">
+                        <svg className="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                         </svg>
                       </a>
                     </div>
                   </div>
                 </CardContent>
               </Card>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>
       <div id="contact-bottom"></div>
-    </section>
-  );
+    </motion.section>;
 };
-
 export default ContactSection;
